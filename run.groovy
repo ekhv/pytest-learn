@@ -16,6 +16,8 @@ pipeline {
                     junit 'results.xml'
                 }
             }
+
+            println "Test result\n${env.RUN_TESTS_DISPLAY_URL}"
         }
     }
 }
