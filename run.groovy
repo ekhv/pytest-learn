@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage("Env Variables") {
             steps {
@@ -18,7 +17,9 @@ pipeline {
             }
         }
         stage('Result') {
-            println "Test result\n${env.RUN_TESTS_DISPLAY_URL}"
+            steps {
+                println "Test result\n${env.RUN_TESTS_DISPLAY_URL}"
+            }
         }
     }
 }
