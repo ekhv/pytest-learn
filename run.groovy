@@ -12,7 +12,7 @@ pipeline {
             }
             post {
                 always {
-                    println "Test result\n${env.RUN_TESTS_DISPLAY_URL}"
+                    //println "Test result\n${env.RUN_TESTS_DISPLAY_URL}"
                     junit 'results.xml'
                 }
             }
