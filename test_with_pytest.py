@@ -2,8 +2,7 @@ import os
 import unittest
 
 
-class TestCase(unittest.TestCase):
-
+class TestCaseOne(unittest.TestCase):
     def test_always_passes(self):
         """Test True"""
         self.assertTrue(True)
@@ -17,10 +16,17 @@ class TestCase(unittest.TestCase):
         self.assertTrue(False)
 
 
-class TestWorkPiece(unittest.TestSuite):
-    def test_always_fails(self):
-        """Test False"""
-        self.assertTrue(False)
+class TestCaseTwo(unittest.TestCase):
+    """Work piece"""
+
+    def test_wp_1(self):
+        pass
+
+    def test_wp_2(self):
+        pass
+
+    def test_wp_3(self):
+        pass
 
 
 if __name__ == "__main__":
