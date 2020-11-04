@@ -18,8 +18,9 @@ class TestCase(unittest.TestCase):
 
 
 class TestWorkPiece(unittest.TestCase):
-    def test_(self):
-        pass
+    def test_always_fails(self):
+        """Test False"""
+        self.assertTrue(False)
 
 
 if __name__ == "__main__":
