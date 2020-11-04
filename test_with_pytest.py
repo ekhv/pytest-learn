@@ -17,5 +17,10 @@ class TestCase(unittest.TestCase):
         self.assertTrue(False)
 
 
+class TestWorkPiece(unittest.TestCase):
+    def test_(self):
+        pass
+
+
 if __name__ == "__main__":
     unittest.main()
