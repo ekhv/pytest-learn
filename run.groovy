@@ -16,12 +16,12 @@ pipeline {
         stage('Checks') {
             steps {
                 script {
-                    if (pass_private_key.size() == 0) {
+                    if (env.pass_private_key.size() == 0) {
                         currentBuild.result = "FAILURE"
                         throw new AbortException("Error. pass_private_key  is empty.")
                     }
 
-                    if (app_server.isEmpty()) {
+                    if (env.app_server.isEmpty()) {
                         currentBuild.result = "FAILURE"
                         throw new AbortException("Error. app_server is empty.")
                     }
