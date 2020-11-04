@@ -18,7 +18,7 @@ pipeline {
                 script {
                     if (env.pass_private_key.size() == 0) {
                         currentBuild.result = "FAILURE"
-                        throw new AbortException("Error. pass_private_key  is empty.")
+                        throw new AbortException("Error. pass_private_key is empty.")
                     }
 
                     if (env.app_server.isEmpty()) {
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Info') {
             steps {
-                println  "app server $app_server"
+                println "app server $app_server"
             }
         }
 
