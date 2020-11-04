@@ -17,7 +17,7 @@ class TestCase(unittest.TestCase):
         self.assertTrue(False)
 
 
-class TestWorkPiece(unittest.TestCase):
+class TestWorkPiece(unittest.TestSuite):
     def test_always_fails(self):
         """Test False"""
         self.assertTrue(False)
