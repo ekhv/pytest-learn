@@ -6,23 +6,16 @@ pipeline {
     agent any
     parameters {
         string(defaultValue: '', description: 'app server', name: 'app_server')
-        password(defaultValue: '', description: 'Passphrase private key', name: 'pass_private_key')
     }
 
     environment {
         app_server = "$app_server"
-        passphrase = "$pass_private_key"
     }
 
     stages {
         stage('Checks') {
             steps {
                 script {
-                    if (env.pass_private_key.size() == 0) {
-                        currentBuild.result = "FAILURE"
-                        throw new AbortException("Error. pass_private_key is empty.")
-                    }
-
                     if (env.app_server.isEmpty()) {
                         currentBuild.result = "FAILURE"
                         throw new AbortException("Error. app_server is empty.")
