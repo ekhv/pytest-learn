@@ -1,6 +1,17 @@
 #!/usr/bin/env groovy
-@Library('utils') _
 import hudson.AbortException
+
+lib = library(
+        identifier: 'utils@main',
+        retriever: modernSCM(
+                [
+                        $class: 'GitSCMSource',
+                        remote: 'https://github.com/ekhv/jenkins-libs.git'
+                ]
+        )
+)
+
+def title = lib.org.foo.Title.new()
 
 pipeline {
     agent any
@@ -20,7 +31,7 @@ pipeline {
     stages {
         stage('Checks') {
             steps {
-                println(lib.titleStage("Checks"))
+                println(title.titleStage("Checks"))
                 script {
                     if (env.app_server.isEmpty()) {
                         currentBuild.result = "FAILURE"
@@ -32,21 +43,21 @@ pipeline {
 
         stage('Info') {
             steps {
-                println(lib.titleStage("Info"))
+                println(title.titleStage("Info"))
                 println "app server $app_server"
             }
         }
 
         stage('Test') {
             steps {
-                println(lib.titleStage("Run test"))
+                println(title.titleStage("Run test"))
                 sh 'python3 -m pytest --junit-xml results.xml test_with_pytest.py'
             }
         }
     }
     post {
         always {
-            println(lib.titleStage("Result"))
+            println(title.titleStage("Result"))
             println "Test result\n${env.RUN_TESTS_DISPLAY_URL}"
             junit 'results.xml'
         }
