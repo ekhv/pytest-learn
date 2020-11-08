@@ -4,6 +4,11 @@ import hudson.AbortException
 
 pipeline {
     agent any
+
+    options {
+        ansiColor('xterm')
+    }
+
     parameters {
         string(defaultValue: '', description: 'app server', name: 'app_server')
     }
